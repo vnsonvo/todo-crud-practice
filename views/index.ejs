@@ -5,9 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <script type="text/javascript" src="js/main.js"></script>
+    <section class="todo-container">
+      <h2>To Do List</h2>
+      <section class="todo">
+        <form action="/" method="POST" class="todo-header">
+          <input type="text" name="title" placeholder="title" />
+          <textarea name="content" id="" cols="45" rows="6"></textarea>
+          <button><span class="fas fa-plus">Add Text</span></button>
+        </form>
+      </section>
+      <ul class="todo-list">
+        <% todos.forEach( todo => { %>
+        <li class="todo-list-item">
+          <span class="todo-list-item-title"><%= todo.title %></span>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+    <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
