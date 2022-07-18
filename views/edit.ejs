@@ -17,7 +17,7 @@
       integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <section class="todo-container">
@@ -26,7 +26,11 @@
         <ul class="todo-list">
           <% todos.forEach( todo => { %> <% if (todo._id == id) { %>
           <li class="todo-list-item">
-            <form action="/edit/<%= todo._id %>" method="POST">
+            <form
+              action="/edit/<%= todo._id %>"
+              method="POST"
+              class="todo-header"
+            >
               <input
                 type="text"
                 name="title"
@@ -37,7 +41,9 @@
 <%= todo.content %></textarea
               >
               <button type="submit" class="confirm">Confirm</button>
-              <button type="reset" class="cancel">Cancel</button>
+              <button type="reset" class="cancel">
+                <a href="/">Cancel</a>
+              </button>
             </form>
           </li>
           <% } else { %>
