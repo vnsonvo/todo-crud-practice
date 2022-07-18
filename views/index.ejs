@@ -28,14 +28,21 @@
           <textarea name="content" id="" cols="45" rows="6"></textarea>
           <button><span class="fas fa-plus">Add Text</span></button>
         </form>
+        <ul class="todo-list">
+          <% todos.forEach( todo => { %>
+          <li class="todo-list-item">
+            <span class="todo-list-item-title"><%= todo.title %></span>
+            <span class="todo-list-item-content"><%= todo.content %></span>
+            <a href="/edit/<%= todo._id %>" class="edit"
+              ><span class="fas fa-edit"></span
+            ></a>
+            <a href="/remove/<%= todo._id %>" class="remove"
+              ><span class="fas fa-times"></span
+            ></a>
+          </li>
+          <% }) %>
+        </ul>
       </section>
-      <ul class="todo-list">
-        <% todos.forEach( todo => { %>
-        <li class="todo-list-item">
-          <span class="todo-list-item-title"><%= todo.title %></span>
-        </li>
-        <% }) %>
-      </ul>
     </section>
     <script type="text/javascript" src="./js/main.js"></script>
   </body>

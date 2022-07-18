@@ -37,6 +37,30 @@ app.post("/", async (req, res) => {
   }
 });
 
+app
+  .route("/edit/:id")
+  .get((req, res) => {
+    const id = req.params.id;
+    Todo.find({}, (err, todos) => {
+      res.render("edit.ejs", { todos: todos, id: id });
+    });
+  })
+  .post((req, res) => {
+    const id = req.params.id;
+
+    Todo.findByIdAndUpdate(
+      id,
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      (err, todo) => {
+        if (err) return res.status(500).send(err);
+        res.redirect("/");
+      }
+    );
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

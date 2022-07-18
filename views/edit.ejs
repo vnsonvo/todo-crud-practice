@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <section class="todo-container">
+      <h2>Edit List Item</h2>
+      <section class="todo">
+        <ul class="todo-list">
+          <% todos.forEach( todo => { %> <% if (todo._id == id) { %>
+          <li class="todo-list-item">
+            <form action="/edit/<%= todo._id %>" method="POST">
+              <input
+                type="text"
+                name="title"
+                placeholder="title"
+                value="<%= todo.title %>"
+              />
+              <textarea name="content" id="" cols="45" rows="6">
+<%= todo.content %></textarea
+              >
+              <button type="submit" class="confirm">Confirm</button>
+              <button type="reset" class="cancel">Cancel</button>
+            </form>
+          </li>
+          <% } else { %>
+          <li class="todo-list-item">
+            <span class="todo-list-item-title"><%= todo.title %></span>
+            <span class="todo-list-item-content"><%= todo.content %></span>
+            <a href="/edit/<%= todo._id %>" class="edit"
+              ><span class="fas fa-edit"></span
+            ></a>
+            <a href="/remove/<%= todo._id %>" class="remove"
+              ><span class="fas fa-times"></span
+            ></a>
+          </li>
+          <% } }) %>
+        </ul>
+      </section>
+    </section>
+    <script type="text/javascript" src="./js/main.js"></script>
+  </body>
+</html>
